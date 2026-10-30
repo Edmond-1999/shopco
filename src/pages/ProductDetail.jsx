@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import ProductInfo from '../components/ProductInfo'
 
 function ProductDetail() {
   const { id } = useParams()
@@ -8,7 +9,7 @@ function ProductDetail() {
     <div>
       <Navbar />
       <div>
-
+        <ProductInfo productId={id} />
       </div>
     </div>
   )
