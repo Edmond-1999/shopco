@@ -1,0 +1,33 @@
+.brands-bar {
+    background: #000000;
+    color: #ffffff;
+    width: 100%;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+.brands-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    padding: 0 25px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.brands {
+    display: inline-block;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    color: #ffffff;
+}
+
+
+
+
+
+

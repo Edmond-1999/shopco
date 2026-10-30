@@ -1,0 +1,80 @@
+.hero {
+    background: #f3f3f3;
+    padding: 42px 44px 0;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.hero-row {
+    max-width: 1480px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-copy {
+    max-width: 690px;
+}
+
+.home-intro {
+    margin-top: 18px;
+}
+
+.home-intro-heading {
+    margin: 0;
+    font-size: 75px;
+    font-weight: 900;
+    color: #111111;
+
+}
+
+.home-intro-text {
+    margin: 28px 0 32px;
+    max-width: 630px;
+    font-size: 25px;
+    line-height: 1.6;
+    color: rgb(77, 77, 77);
+}
+
+.shop-now-button {
+    border: none;
+    border-radius: 999px;
+    background: #111111;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 18px 35px;
+    cursor: pointer;
+}
+
+.site-statistics {
+    display: flex;
+    align-items: flex-start;
+    gap: 58px;
+    margin-top: 54px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(17, 17, 17, 0.15);
+}
+
+.stat-item {
+    min-width: 150px;
+}
+
+.stat-item h3 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    color: #111111;
+    font-weight: 700;
+}
+
+.stat-item p {
+    margin: 0;
+    color: rgba(17, 17, 17, 0.75);
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+
+
