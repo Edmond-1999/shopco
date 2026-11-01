@@ -1,7 +1,12 @@
 import { FiSearch, FiShoppingCart } from 'react-icons/fi'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
+  const items = useSelector((state) => state.cart.items)
+  const totalQuantity = items.reduce((total, item) => total + item.quantity, 0)
+
   return (
     <nav className="navbar">
       <div className="big-div">
@@ -29,9 +34,16 @@ function Navbar() {
           <input type="text" placeholder="Search for products..." className="search-bar" />
         </div>
 
-        <button type="button" className="cart-button" aria-label="Cart">
+        <Link
+          to="/cart"
+          className="cart-button"
+          aria-label={`Cart, ${totalQuantity} items`}
+        >
           <FiShoppingCart />
-        </button>
+          {totalQuantity > 0 && (
+            <span className="cart-count">{totalQuantity}</span>
+          )}
+        </Link>
       </div>
     </nav>
   )

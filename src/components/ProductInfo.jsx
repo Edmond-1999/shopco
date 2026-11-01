@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { FiMinus, FiPlus } from 'react-icons/fi'
+import { addToCart } from '../store/sliceCart'
 import { useGetProductByIdQuery } from '../store/productsApi'
 import './ProductInfo.css'
 
 function ProductInfo({ productId }) {
   const [quantity, setQuantity] = useState(1)
+  const dispatch = useDispatch()
   const {
     data: product,
     isLoading,
@@ -18,6 +21,10 @@ function ProductInfo({ productId }) {
 
   const handleDecrement = () => {
     setQuantity((previousQuantity) => Math.max(1, previousQuantity - 1))
+  }
+
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity }))
   }
 
   if (!productId) {
@@ -66,7 +73,13 @@ function ProductInfo({ productId }) {
               <FiPlus />
             </button>
 
-            <button className="add-to-cart-btn">Add to Cart</button>
+            <button
+              type="button"
+              className="add-to-cart-btn"
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
