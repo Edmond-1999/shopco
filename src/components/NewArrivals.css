@@ -30,13 +30,18 @@
 }
 
 .view-all-button {
-  background: #111111;
-  color: #ffffff;
-  border: none;
+  background:white;
+  color: black;
+  border: 2px solid black;
   border-radius: 999px;
   padding: 14px 28px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.view-all-button:hover {
+  background: black;
+  color: white;
 }
 

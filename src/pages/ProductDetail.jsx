@@ -9,7 +9,7 @@ function ProductDetail() {
     <div>
       <Navbar />
       <div>
-        <ProductInfo productId={id} />
+        <ProductInfo key={id} productId={id} />
       </div>
     </div>
   )

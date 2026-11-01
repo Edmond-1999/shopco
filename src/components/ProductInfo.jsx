@@ -1,55 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FiMinus, FiPlus } from 'react-icons/fi'
+import { useGetProductByIdQuery } from '../store/productsApi'
 import './ProductInfo.css'
 
 function ProductInfo({ productId }) {
-  const [product, setProduct] = useState(null)
   const [quantity, setQuantity] = useState(1)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-
-  useEffect(() => {
-    const controller = new AbortController()
-
-    async function loadProduct() {
-      setLoading(true)
-      setError('')
-      setProduct(null)
-      setQuantity(1)
-
-      try {
-        const url = new URL(`https://fakestoreapi.com/products/${productId}`)
-        const response = await fetch(url, {
-          signal: controller.signal,
-        })
-
-        if (!response.ok) {
-          throw new Error(`Failed to load product details`)
-        }
-
-        const data = await response.json()
-        if (!data || !data.id) {
-          throw new Error('Product not found.')
-        }
-
-        setProduct(data)
-      } catch (loadError) {
-        if (loadError.name !== 'AbortError') {
-          setError(loadError.message || 'Failed to load product details.')
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-        }
-      }
-    }
-
-    if (productId) {
-      loadProduct()
-    }
-
-    return () => controller.abort()
-  }, [productId])
+  const {
+    data: product,
+    isLoading,
+    isError,
+    error,
+  } = useGetProductByIdQuery(productId, { skip: !productId })
 
   const handleIncrement = () => {
     setQuantity((previousQuantity) => previousQuantity + 1)
@@ -63,15 +24,17 @@ function ProductInfo({ productId }) {
     return <p className="product-detail-message product-detail-error">Product ID is missing.</p>
   }
 
-  if (loading) {
+  if (isLoading) {
     return <p className="product-detail-message">Loading product details...</p>
   }
 
-  if (error) {
-    return <p className="product-detail-message product-detail-error">{error}</p>
+  if (isError) {
+    const errorMessage =
+      error?.data?.message || error?.error || 'Failed to load product details.'
+    return <p className="product-detail-message product-detail-error">{errorMessage}</p>
   }
 
-  if (!product) {
+  if (!product?.id) {
     return <p className="product-detail-message">Product not found.</p>
   }
 
@@ -102,6 +65,8 @@ function ProductInfo({ productId }) {
             >
               <FiPlus />
             </button>
+
+            <button className="add-to-cart-btn">Add to Cart</button>
           </div>
         </div>
       </div>

@@ -73,6 +73,19 @@
   cursor: pointer;
 }
 
+.add-to-cart-btn {
+  min-width: 154px;
+  min-height: 52px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .product-detail-message {
   max-width: 1200px;
   margin: 48px auto;
@@ -82,4 +95,3 @@
 .product-detail-error {
   color: #b42318;
 }
-

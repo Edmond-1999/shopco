@@ -1,28 +1,11 @@
-import { useEffect, useState } from 'react'
 import './NewArrivals.css'
 import ProductCard from './ProductCard'
+import { useGetProductsQuery } from '../store/productsApi'
 
 function NewArrivals() {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('https://fakestoreapi.com/products')
-        if (!response.ok) throw new Error('Failed to fetch products')
-
-        const data = await response.json()
-        setProducts(data.slice(0, 4))
-      } catch (error) {
-        console.error('Error fetching products:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchProducts()
-  }, [])
+  const { data: products, isLoading, isError, error } = useGetProductsQuery()
+  const errorMessage =
+    error?.data?.message || error?.error || 'Failed to load products.'
 
   return (
     <section className="new-arrivals">
@@ -31,10 +14,12 @@ function NewArrivals() {
       </div>
 
       <div className="new-arrivals-grid">
-        {loading ? (
+        {isLoading ? (
           <p>Loading products...</p>
+        ) : isError ? (
+          <p role="alert">{errorMessage}</p>
         ) : (
-          products.map((product) => (
+          products.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         )}
