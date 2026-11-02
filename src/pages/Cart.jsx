@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from '../store/sliceCart'
+import { decreaseQuantity, increaseQuantity, removeFromCart} from '../store/sliceCart'
 import './Cart.css'
 
 function Cart() {
