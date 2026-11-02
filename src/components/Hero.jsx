@@ -1,4 +1,5 @@
 import './Hero.css'
+import heroImage from '../assets/trendy-fashionable-couple-posing.jpg'
 
 function Hero() {
   return (
@@ -39,7 +40,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-image" aria-label="Fashion model illustration" />
+        <img className="hero-image" src={heroImage} alt="Fashionable couple"/>
       </div>
     </section>
   )
