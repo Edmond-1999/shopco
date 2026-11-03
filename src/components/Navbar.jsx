@@ -34,11 +34,7 @@ function Navbar() {
           <input type="text" placeholder="Search for products..." className="search-bar" />
         </div>
 
-        <Link
-          to="/cart"
-          className="cart-button"
-          aria-label={`Cart, ${totalQuantity} items`}
-        >
+        <Link to="/cart" className="cart-button">
           <FiShoppingCart />
           {totalQuantity > 0 && (
             <span className="cart-count">{totalQuantity}</span>
